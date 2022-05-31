@@ -35,7 +35,7 @@ CREATE TABLE `cartao` (
   KEY `cartao_ibfk_2` (`id_instituicao`),
   CONSTRAINT `cartao_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`ID_USUARIO`),
   CONSTRAINT `cartao_ibfk_2` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`ID_INSTITUICAO`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `cartao` (
 
 LOCK TABLES `cartao` WRITE;
 /*!40000 ALTER TABLE `cartao` DISABLE KEYS */;
-INSERT INTO `cartao` VALUES (1,'Cartão Nubank','Crédito',15,2000.00,1,260),(2,'Cartão Itau','Debito',10,1500.00,2,341),(3,'Cartão Next','Crédito',15,1000.00,2,260),(4,'Cartão Picpay','Crédito',10,500.00,143,380);
+INSERT INTO `cartao` VALUES (1,'Cartão Nubank','Cartão',5,7100.00,100,260),(2,'Cartão Inter','Cartão',5,2000.00,100,77),(3,'Cartão Santander','Cartão',5,2000.00,100,33),(4,'Cartão Caixa','Débito',5,0.00,100,104);
 /*!40000 ALTER TABLE `cartao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -163,7 +163,7 @@ CREATE TABLE `conta` (
   KEY `conta_ibfk_2` (`id_instituicao`),
   CONSTRAINT `conta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`ID_USUARIO`),
   CONSTRAINT `conta_ibfk_2` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`ID_INSTITUICAO`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,'Conta Nubank','Conta Corrente',5000.00,1,260),(2,'Conta Inter','Conta Corrente',4500.00,2,77),(3,'Conta Santander','Cartao',1500.00,2,260),(4,'Conta Master','Conta',100.00,143,260);
+INSERT INTO `conta` VALUES (1,'Conta Nubank','Conta Digital',0.00,100,260),(2,'Conta Inter','Conta Corrente',0.00,100,77),(3,'Conta Santander','Conta Corrente',0.00,100,33),(4,'Conta Itaú','Conta Itaú',0.00,100,341),(5,'Carteira','Carteira Física',0.00,100,1000),(6,'Carteira','Selecione',50.00,100,NULL),(7,'Carteira','Selecione',50.00,100,NULL);
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -243,7 +243,7 @@ CREATE TABLE `conta_dados` (
 
 LOCK TABLES `conta_dados` WRITE;
 /*!40000 ALTER TABLE `conta_dados` DISABLE KEYS */;
-INSERT INTO `conta_dados` VALUES (1,'4');
+INSERT INTO `conta_dados` VALUES (1,'7');
 /*!40000 ALTER TABLE `conta_dados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +293,7 @@ CREATE TABLE `instituicao` (
 
 LOCK TABLES `instituicao` WRITE;
 /*!40000 ALTER TABLE `instituicao` DISABLE KEYS */;
-INSERT INTO `instituicao` VALUES (1,'Banco do Brasil'),(33,'Banco Santander'),(77,'Banco Inter'),(93,'Pelocred'),(104,'Caixa Econômica Federal'),(121,'Agibank'),(125,'Banco Genial'),(197,'Stone Pagamentos'),(212,'Banco Original'),(218,'BS2'),(237,'Banco Bradesco'),(260,'Nubank'),(280,'Meupag!'),(290,'Pagseguro'),(323,'Mercado Pago'),(335,'Banco Digio'),(336,'C6 Bank'),(340,'Superdigital'),(341,'Banco Itaú'),(356,'Banco Real'),(380,'PicPay'),(389,'Banco Mercantil do Brasil S.A'),(396,'Hub Pagamentos'),(399,'HSBC Bank Brasil'),(401,'Iugu'),(422,'Banco Safra'),(450,'Fitbank'),(453,'Banco Rural'),(633,'Banco Rendimento'),(652,'Itaú Unibanco Holding'),(654,'Banco Digi+'),(735,'Neon'),(745,'Banco Citibank');
+INSERT INTO `instituicao` VALUES (1,'Banco do Brasil'),(33,'Banco Santander'),(77,'Banco Inter'),(93,'Pelocred'),(104,'Caixa Econômica Federal'),(121,'Agibank'),(125,'Banco Genial'),(197,'Stone Pagamentos'),(212,'Banco Original'),(218,'BS2'),(237,'Banco Bradesco'),(260,'Nubank'),(280,'Meupag!'),(290,'Pagseguro'),(323,'Mercado Pago'),(335,'Banco Digio'),(336,'C6 Bank'),(340,'Superdigital'),(341,'Banco Itaú'),(356,'Banco Real'),(380,'PicPay'),(389,'Banco Mercantil do Brasil S.A'),(396,'Hub Pagamentos'),(399,'HSBC Bank Brasil'),(401,'Iugu'),(422,'Banco Safra'),(450,'Fitbank'),(453,'Banco Rural'),(633,'Banco Rendimento'),(652,'Itaú Unibanco Holding'),(654,'Banco Digi+'),(735,'Neon'),(745,'Banco Citibank'),(1000,'Outros');
 /*!40000 ALTER TABLE `instituicao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +325,7 @@ CREATE TABLE `lancamento` (
   CONSTRAINT `categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`),
   CONSTRAINT `conta` FOREIGN KEY (`id_conta`) REFERENCES `conta` (`id_conta`),
   CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=15983 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16013 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +334,7 @@ CREATE TABLE `lancamento` (
 
 LOCK TABLES `lancamento` WRITE;
 /*!40000 ALTER TABLE `lancamento` DISABLE KEYS */;
-INSERT INTO `lancamento` VALUES (15977,'Empréstimo c/ Juros ','Receita Parcelada',300.00,'2022-05-26',143,4,4,2,'1 / 5','Mensalmente'),(15978,'Empréstimo c/ Juros ','Receita Parcelada',300.00,'2022-06-26',143,4,4,2,'2 / 5','Mensalmente'),(15979,'Empréstimo c/ Juros ','Receita Parcelada',300.00,'2022-07-26',143,4,4,2,'3 / 5','Mensalmente'),(15980,'Empréstimo c/ Juros ','Receita Parcelada',300.00,'2022-08-26',143,4,4,2,'4 / 5','Mensalmente'),(15981,'Empréstimo c/ Juros ','Receita Parcelada',300.00,'2022-09-26',143,4,4,2,'5 / 5','Mensalmente'),(15982,'Teste','Receita',50.00,'2022-05-27',143,4,NULL,4,NULL,NULL);
+INSERT INTO `lancamento` VALUES (16004,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-06-22',100,5,NULL,2,'1 / 4','Mensalmente'),(16005,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-07-22',100,5,NULL,2,'2 / 4','Mensalmente'),(16006,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-08-22',100,5,NULL,2,'3 / 4','Mensalmente'),(16007,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-09-22',100,5,NULL,2,'4 / 4','Mensalmente'),(16008,'A4S1A5S','Receita Parcelada',25.00,'2022-05-30',100,2,NULL,4,'1 / 2','Semanalmente'),(16009,'A4S1A5S','Receita Parcelada',25.00,'2022-06-06',100,2,NULL,4,'2 / 2','Semanalmente'),(16010,'Teste Unica','Receita',50.00,'2022-05-30',100,2,NULL,2,NULL,NULL),(16011,'Teste Parcelado','Receita Parcelada',60.00,'2022-05-30',100,1,NULL,5,'1 / 2','Bimestral'),(16012,'Teste Parcelado','Receita Parcelada',60.00,'2022-07-30',100,1,NULL,5,'2 / 2','Bimestral');
 /*!40000 ALTER TABLE `lancamento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -429,7 +429,7 @@ CREATE TABLE `lancamento_dados` (
 
 LOCK TABLES `lancamento_dados` WRITE;
 /*!40000 ALTER TABLE `lancamento_dados` DISABLE KEYS */;
-INSERT INTO `lancamento_dados` VALUES (1,1550.00);
+INSERT INTO `lancamento_dados` VALUES (1,1220.00);
 /*!40000 ALTER TABLE `lancamento_dados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,30 +463,6 @@ CREATE TABLE `meta` (
 LOCK TABLES `meta` WRITE;
 /*!40000 ALTER TABLE `meta` DISABLE KEYS */;
 /*!40000 ALTER TABLE `meta` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tipo_receita`
---
-
-DROP TABLE IF EXISTS `tipo_receita`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tipo_receita` (
-  `id_tipo_receita` int(11) NOT NULL,
-  `descricao` varchar(120) NOT NULL,
-  PRIMARY KEY (`id_tipo_receita`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tipo_receita`
---
-
-LOCK TABLES `tipo_receita` WRITE;
-/*!40000 ALTER TABLE `tipo_receita` DISABLE KEYS */;
-INSERT INTO `tipo_receita` VALUES (1,'Receita'),(2,'Receita Fixa'),(3,'Receita Parcelada');
-/*!40000 ALTER TABLE `tipo_receita` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -541,7 +517,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Lucas','Heideric','lucas@countpay.com.br','2000-07-24','theheideric','123456',1),(2,'Mateus','Ramos','mateus@countpay.com.br','2001-08-25','theramos','123456',1),(3,'Raphael','Rocha','raphel@gmail.com','1993-06-06','Mateuzin','Mateuzão',2),(4,'Alexandre','Galhardo 2','alexandre@countpay.com.br','1999-05-05','xande','123456',1),(143,'usuario','usuario','usuario@gmail.com','2022-05-19','usuario','usuario',2);
+INSERT INTO `usuario` VALUES (1,'Lucas','Heideric','lucas@countpay.com.br','2000-07-24','theheideric','123456',1),(2,'Mateus','Ramos','mateus@countpay.com.br','2001-08-25','theramos','123456',1),(3,'Raphael','Rocha','raphel@gmail.com','1993-06-06','Mateuzin','Mateuzão',2),(4,'Alexandre','Galhardo 2','alexandre@countpay.com.br','1999-05-05','xande','123456',1),(100,'Lucas','Heideric','lucasrochaheideric@gmail.com','2000-07-24','lucas','123456',2),(143,'usuario','usuario','usuario@gmail.com','2022-05-19','usuario','usuario',2);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -613,13 +589,79 @@ CREATE TABLE `usuario_dados` (
 
 LOCK TABLES `usuario_dados` WRITE;
 /*!40000 ALTER TABLE `usuario_dados` DISABLE KEYS */;
-INSERT INTO `usuario_dados` VALUES (1,5);
+INSERT INTO `usuario_dados` VALUES (1,6);
 /*!40000 ALTER TABLE `usuario_dados` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'countpay'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `sp_cartao_inserir` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cartao_inserir`(
+
+	papelido VARCHAR(100),
+    ptipo_cartao VARCHAR(45),
+    pvence_dia INT,
+    plimite DECIMAL(10,2),
+    pid_usuario INT,
+    pid_instituicao INT
+
+)
+BEGIN
+
+	INSERT INTO cartao (apelido, tipo_cartao, vence_dia, limite, id_usuario, id_instituicao) VALUES 
+					   (papelido, ptipo_cartao, pvence_dia, plimite, pid_usuario, pid_instituicao);
+                       
+                       SELECT * FROM cartao WHERE id_cartao = LAST_INSERT_ID();
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_conta_inserir` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_conta_inserir`(
+
+	papelido VARCHAR(100),
+    ptipo_conta VARCHAR(35),
+    psaldo DECIMAL(10,2),
+    pid_usuario INT,
+    pid_instituicao INT
+    
+
+)
+BEGIN
+
+	INSERT INTO conta (apelido, tipo_conta, saldo, id_usuario, id_instituicao) VALUES
+					  (papelido, ptipo_conta, psaldo, pid_usuario, pid_instituicao);
+                      
+                      SELECT * FROM conta WHERE id_conta = LAST_INSERT_ID();
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `sp_lancamento_normal` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -735,4 +777,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-27 20:27:28
+-- Dump completed on 2022-05-30 21:42:53

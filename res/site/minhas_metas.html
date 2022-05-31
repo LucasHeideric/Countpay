@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - Countpay Gestão Financeira</title>
+
+  <!-- Icones utilizado no Projeto -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Arquivo CSS do Countpay -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Cabeçalho ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <!-- ======= Sidebar - Menu Vertical ======= -->
+    <div class="d-flex align-items-center justify-content-between">
+      <!-- Inicio Logo -->
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+    <!-- Fim Logo -->
+    
+    <!-- Inicio Busca -->
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Pesquisar" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+    <!-- Fim Busca -->
+
+    <!-- Inicio Icone de Busca com tela reduzida -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+        <!-- Fim Icone de Busca com tela reduzida -->
+
+        <li class="nav-item dropdown">
+
+          <!-- Inicio Icone de Notificações -->
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a>
+          <!-- Fim Icone de Notificações -->
+
+          <!-- Inicio das Notificações com Dropdown -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              Você possui 4 novas notificações
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Netflix</h4>
+                <p>Faltam 3 dias para a renovação da sua...</p>
+                <p>30 min. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Cuidado com os gastos</h4>
+                <p>Você está prestes a estourar sua meta...</p>
+                <p>1 hr. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Dia de pagamento!</h4>
+                <p>Confirme a entrada do seu salário no...</p>
+                <p>2 hrs. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Boas noticias</h4>
+                <p>Separamos uma série de investimentos que...</p>
+                <p>30 min. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Mostrar todas notificações</a>
+            </li>
+
+          </ul>
+          <!-- Fim das Notificações com Dropdown -->
+
+        </li>
+        <!-- Fim das Notificações -->
+
+        <!-- Inicio Perfil -->
+        <li class="nav-item dropdown pe-3">
+
+          <!-- Inicio Perfil Imagem Icone -->
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Lucas Heideric</span>
+          </a>
+          <!-- Fim Perfil Imagem Icone -->
+
+          <!-- Inicio Informações do Perfil -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Lucas Heideric</h6>
+              <span>CEO Countpay</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="perfil.html">
+                <i class="bi bi-person"></i>
+                <span>Meu Perfil</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="perfil.html">
+                <i class="bi bi-gear"></i>
+                <span>Configurações da Conta</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Precisa de Ajuda?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sair</span>
+              </a>
+            </li>
+
+          </ul>
+          <!-- Fim Informações do Perfil -->
+        </li>
+        <!-- Fim Perfil -->
+
+      </ul>
+    </nav>
+    <!-- Fim do Sidebar - Menu Vertical -->
+
+  </header>
+  <!-- Fim do Cabeçalho -->
+  
+  <!-- ======= Inicio do Menu Lateral ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <!-- Inicio Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bx bxs-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <!-- Fim Dashboard -->
+
+      <!-- Inicio da Lista do Menu -->
+
+      <!-- Inicio Lançamentos -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bx bxs-dollar-circle"></i><span>Laçamentos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="lancamentos_receita.html">
+              <i class="bx bxs-chevron-right"></i><span>Receita</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="lancamento_despesa.html">
+              <i class="bx bxs-chevron-right"></i><span>Despesa</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="lancamentos_transferencia.html">
+              <i class="bx bxs-chevron-right"></i><span>Transferência</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="lancamentos_historico.html">
+              <i class="bx bxs-chevron-right"></i><span>Historico de Lançamento</span>
+            </a>
+          </li>
+        </ul>
+
+      </li>
+      <!-- Fim Lançamentos -->
+
+      <!-- Inicio Metas -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bx bxs-bar-chart-square"></i><span>Metas</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+            <a href="nova_meta.html">
+              <i class="bx bxs-chevron-right"></i><span>Criar Nova Meta</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="minhas_metas.html">
+              <i class="bx bxs-chevron-right"></i><span>Minhas Metas</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      <!-- Fim Metas -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bx bxs-file-doc"></i><span>Relatórios</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="relatorios_busca.html">
+              <i class="bx bxs-chevron-right"></i><span>Busca Livre</span>
+            </a>
+          </li>
+          <li>
+            <a href="tables-data.html">
+              <i class="bx bxs-chevron-right"></i><span>Lançamentos</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+
+      <li>
+        <hr class="dropdown-divider text-secondary">
+      </li>
+      <!-- Titulo do Menu Lateral -->
+      <li class="nav-heading">Utilitários</li>
+
+      <!-- Inicio Perfil -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="perfil.html">
+          <i class="bx bxs-id-card"></i>
+          <span>Perfil</span>
+        </a>
+      </li>
+      <!-- Fim Perfil -->
+
+      <!-- Inicio Suporte -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bx bxs-help-circle"></i>
+          <span>Suporte Online</span>
+        </a>
+      </li>
+      <!-- Fim Suporte -->
+
+      <!-- Inicio Contato -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bx bxs-envelope"></i>
+          <span>Contato</span>
+        </a>
+      </li>
+      <!-- Fim Contato -->
+
+    </ul>
+
+  </aside>
+  <!-- Fim do Menu Lateral -->
+
+  <!-- Inicio do Conteúdo da Pagina -->
+  <main id="main" class="main">
+
+    <!-- Inicio Título da Pagina -->
+    <div class="pagetitle">
+      <h1>Minhas Metas</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Minhas Metas</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- Fim Título da Pagina -->
+
+    <section class="section" >
+        <div class="row justify-content-center">
+
+            <div class="col-lg-12">
+
+
+              <section class="section dashboard">
+                <div class="row justify-content-center">
+    
+                    <div class="col-md-12">
+    
+                        <div class="card">
+                            <div class="card-body pb-0" style="min-height: 66vh;">
+    
+                                <!-- Table with hoverable rows -->
+                                <div class="card-body pt-3">
+                                    <table class="table table-hover datatable">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">⠀</th>
+                                          <th scope="col">Nome</th>
+                                          <th scope="col">Objetivo</th>
+                                          <th scope="col">Valor</th>
+                                          <th scope="col">Progresso</th>
+                                          <th scope="col">Data Final</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #e90214;"></i></td>
+                                          <td>Mobiliando a casa nova 1</td>
+                                          <td>Comprar uma Televisão</td>
+                                          <td>2.500,00</td> 
+                                          <td><span class="badge" style="background-color: #84bd00;font-size: small;">70%</span></td>
+                                          <td>06-05-2022</td>
+                                        </tr>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #2b4a8b;"></i></td>
+                                          <td>Mobiliando a casa nova 2</td>
+                                          <td>Comprar uma Geladeira</td>
+                                          <td>3.000,00</td> 
+                                          <td><span class="badge" style="background-color: #bd1c00;font-size: small;">10%</span></td>
+                                          <td>06-07-2022</td>
+                                        </tr>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #72d0d7;"></i></td>
+                                          <td>Mobiliando a casa nova 3</td>
+                                          <td>Comprar um Sofá</td>
+                                          <td>1.200,00</td> 
+                                          <td><span class="badge" style="background-color: #00bd19;font-size: small;">90%</span></td>
+                                          <td>06-04-2022</td>
+                                        </tr>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #8dffd4;"></i></td>
+                                          <td>Festa de fim de ano</td>
+                                          <td>Comprar os mantimentos para a ceia de natal</td>
+                                          <td>1.500,00</td> 
+                                          <td><span class="badge" style="background-color: #00e613;font-size: small;">100%</span></td>
+                                          <td>20-12-2021</td>
+                                        </tr>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #b4492e;"></i></td>
+                                          <td>Festa de fim de ano</td>
+                                          <td>Comprar Bebidas para o ano novo</td>
+                                          <td>2.000,00</td> 
+                                          <td><span class="badge" style="background-color: #00e613;font-size: small;">100%</span></td>
+                                          <td>28-12-2021</td>
+                                        </tr>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #5f2d0c;"></i></td>
+                                          <td>Trocar de carro</td>
+                                          <td>Comprar carro novo</td>
+                                          <td>50.000,00</td> 
+                                          <td><span class="badge" style="background-color: #e68200;font-size: small;">25%</span></td>
+                                          <td>01-02-2021</td>
+                                        </tr>
+                                        <tr class="clickable" onclick="window.location='metas_detalhe.html'">
+                                          <td><i class="bi bi-circle-fill"  style="color: #db48b2;"></i></td>
+                                          <td>Volta as aulas</td>
+                                          <td>Comprar material escolar da Heloísa</td>
+                                          <td>1.000,00</td> 
+                                          <td><span class="badge" style="background-color: #e6d700;font-size: small;">50%</span></td>
+                                          <td>80-01-2021</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                  
+                                  </div>
+                  
+                                </div>
+                              </div>
+    
+    
+                              
+
+
+                              
+                                <!-- End Table with hoverable rows -->
+    
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+    
+                </div>
+            </section>
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Equipe <strong><span>Countpay</span></strong>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+{
+    "name": "lucasheideric/countpay",
+    "authors": [
+        {
+            "name": "Countpay",
+            "email": "gestao@countpay.com.br"
+        }
+    ],
+    "require": {
+    	"slim/slim":"2.0",
+    	"rain/raintpl":"3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Countpay\\": "vendor\\countpay\\php-classes\\src"
+        }
+    }
+}

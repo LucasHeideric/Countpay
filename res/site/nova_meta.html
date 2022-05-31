@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dashboard - Countpay Gestão Financeira</title>
+
+  <!-- Icones utilizado no Projeto -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Arquivo CSS do Countpay -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Cabeçalho ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <!-- ======= Sidebar - Menu Vertical ======= -->
+    <div class="d-flex align-items-center justify-content-between">
+      <!-- Inicio Logo -->
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+    <!-- Fim Logo -->
+    
+    <!-- Inicio Busca -->
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Pesquisar" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+    <!-- Fim Busca -->
+
+    <!-- Inicio Icone de Busca com tela reduzida -->
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li>
+        <!-- Fim Icone de Busca com tela reduzida -->
+
+        <li class="nav-item dropdown">
+
+          <!-- Inicio Icone de Notificações -->
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a>
+          <!-- Fim Icone de Notificações -->
+
+          <!-- Inicio das Notificações com Dropdown -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              Você possui 4 novas notificações
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Netflix</h4>
+                <p>Faltam 3 dias para a renovação da sua...</p>
+                <p>30 min. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Cuidado com os gastos</h4>
+                <p>Você está prestes a estourar sua meta...</p>
+                <p>1 hr. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Dia de pagamento!</h4>
+                <p>Confirme a entrada do seu salário no...</p>
+                <p>2 hrs. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Boas noticias</h4>
+                <p>Separamos uma série de investimentos que...</p>
+                <p>30 min. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Mostrar todas notificações</a>
+            </li>
+
+          </ul>
+          <!-- Fim das Notificações com Dropdown -->
+
+        </li>
+        <!-- Fim das Notificações -->
+
+        <!-- Inicio Perfil -->
+        <li class="nav-item dropdown pe-3">
+
+          <!-- Inicio Perfil Imagem Icone -->
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Lucas Heideric</span>
+          </a>
+          <!-- Fim Perfil Imagem Icone -->
+
+          <!-- Inicio Informações do Perfil -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Lucas Heideric</h6>
+              <span>CEO Countpay</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="perfil.html">
+                <i class="bi bi-person"></i>
+                <span>Meu Perfil</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="perfil.html">
+                <i class="bi bi-gear"></i>
+                <span>Configurações da Conta</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Precisa de Ajuda?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sair</span>
+              </a>
+            </li>
+
+          </ul>
+          <!-- Fim Informações do Perfil -->
+        </li>
+        <!-- Fim Perfil -->
+
+      </ul>
+    </nav>
+    <!-- Fim do Sidebar - Menu Vertical -->
+
+  </header>
+  <!-- Fim do Cabeçalho -->
+  
+  <!-- ======= Inicio do Menu Lateral ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <!-- Inicio Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bx bxs-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <!-- Fim Dashboard -->
+
+      <!-- Inicio da Lista do Menu -->
+
+      <!-- Inicio Lançamentos -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bx bxs-dollar-circle"></i><span>Laçamentos</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="lancamentos_receita.html">
+              <i class="bx bxs-chevron-right"></i><span>Receita</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="lancamento_despesa.html">
+              <i class="bx bxs-chevron-right"></i><span>Despesa</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="lancamentos_transferencia.html">
+              <i class="bx bxs-chevron-right"></i><span>Transferência</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="lancamentos_historico.html">
+              <i class="bx bxs-chevron-right"></i><span>Historico de Lançamento</span>
+            </a>
+          </li>
+        </ul>
+
+      </li>
+      <!-- Fim Lançamentos -->
+
+      <!-- Inicio Metas -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bx bxs-bar-chart-square"></i><span>Metas</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          
+          <li>
+            <a href="nova_meta.html">
+              <i class="bx bxs-chevron-right"></i><span>Criar Nova Meta</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="minhas_metas.html">
+              <i class="bx bxs-chevron-right"></i><span>Minhas Metas</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      <!-- Fim Metas -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bx bxs-file-doc"></i><span>Relatórios</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="relatorios_busca.html">
+              <i class="bx bxs-chevron-right"></i><span>Busca Livre</span>
+            </a>
+          </li>
+          <li>
+            <a href="tables-data.html">
+              <i class="bx bxs-chevron-right"></i><span>Lançamentos</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+
+      <li>
+        <hr class="dropdown-divider text-secondary">
+      </li>
+      <!-- Titulo do Menu Lateral -->
+      <li class="nav-heading">Utilitários</li>
+
+      <!-- Inicio Perfil -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="perfil.html">
+          <i class="bx bxs-id-card"></i>
+          <span>Perfil</span>
+        </a>
+      </li>
+      <!-- Fim Perfil -->
+
+      <!-- Inicio Suporte -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bx bxs-help-circle"></i>
+          <span>Suporte Online</span>
+        </a>
+      </li>
+      <!-- Fim Suporte -->
+
+      <!-- Inicio Contato -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bx bxs-envelope"></i>
+          <span>Contato</span>
+        </a>
+      </li>
+      <!-- Fim Contato -->
+
+    </ul>
+
+  </aside>
+  <!-- Fim do Menu Lateral -->
+
+  <!-- Inicio do Conteúdo da Pagina -->
+  <main id="main" class="main pb-0">
+
+    <!-- Inicio Título da Pagina -->
+    <div class="pagetitle">
+        <h1>Criar nova Meta</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item active"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Criar nova Meta</li>
+          </ol>
+        </nav>
+      </div>
+    <!-- Fim Título da Pagina -->
+
+    <section class="section" >
+    <!-- Início do Card -->
+      <div class="card">
+        <div class="card-body pb-0">
+          
+          <div class="col-md-8" style="position: absolute;">
+          <!-- Início do Fomrulário -->
+          <form class="row g-3 pt-5">
+          <!-- Box Nome -->
+            <div class="col-md-12"> 
+                <label for="nome_meta" class="form-label">Nome</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#26A234" title="Escolha a cor da Sua meta" >
+                  </div>
+                  <input type="text" class="form-control" id="nome_meta">
+                </div>
+            </div>
+
+            <!-- Box Objetivo -->
+            <div class="col-md-7"> 
+              <label for="objetivo_meta" class="form-label">Objetivo</label>
+              <input type="text" class="form-control" id="objetivo_meta">
+            </div>
+
+            <!--Box Conta/Cartão-->
+            <div class="col-md-5"> 
+              <label for="contacartao_meta" class="form-label">Conta/Cartão</label> 
+              <select id="contacartao_meta" class="form-select">
+                <option></option>
+                <option>Cartão Nubank Crédito</option>
+                <option>Cartão Nubank Débito</option>
+                <option>Cartão Inter Crédito</option>
+                <option>Conta Corrente Itaú</option>
+                <option>Conta Binance 2</option>
+              </select>
+            </div>
+
+            <!-- Box Valor -->
+            <div class="col-md-2"> 
+              <label for="valor_meta" class="form-label">Valor</label>
+              <input type="number" class="form-control" id="valor_meta" placeholder="R$">
+            </div>
+
+            <!--Box data-->
+            <div class="col-md-3">
+              <label for="data_inicial_meta" class="form-label">Data Inicial</label>
+              <input type="date" class="form-control" id="data_inicial_meta">
+            </div>
+
+            <!--Box Prazo-->
+            <div class="col-md-3">
+              <label for="data_final_meta" class="form-label">Data Final</label>
+              <input type="date" class="form-control" id="data_final_meta">
+            </div>
+
+            <!--Box Notificações-->
+            <div class="col-md-4"> 
+              <label for="notifica_meta" class="form-label">Notificações</label> 
+              <select id="notifica_meta" class="form-select">
+                <option></option>
+                <option>Semanalmente</option>
+                <option>Quinzenalmente</option>
+                <option>Mensalmente</option>
+                <option>Somente ao atingir a meta</option>
+              </select>
+            </div>
+
+            <!--Box Detalhes-->
+            <div class="col-md-12">
+              <label for="detalhe_meta" class="form-label">Detalhes</label>
+              <textarea class="form-control" id="detalhe_meta" style="min-height: 10vh;"></textarea>
+            </div>
+
+            <!--Box Botões-->
+            <div class="text-center"> 
+              <button type="reset"class="btn btn-sm btn-light">Limpar</button>
+              <button type="submit" class="btn btn-success" style="background-color:#26A234;font-weight: 650;">⠀Criar⠀</button> 
+            </div>
+          </form>
+          </div>
+
+          <div class="col-md-12 d-flex flex-row-reverse">
+            <img src="/assets/img/guardando_background.png" alt="Guardando uma grana" style="max-height: 68vh;">
+          </div>
+        
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Equipe <strong><span>Countpay</span></strong>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

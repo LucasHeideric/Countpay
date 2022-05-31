@@ -1,0 +1,113 @@
+ <!-- Inicio do Conteúdo da Pagina -->
+ <main id="main" class="main pb-0">
+
+    <!-- Inicio Título da Pagina -->
+    <div class="pagetitle">
+      <h1>Receita Parcelada</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item active"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item active"><a href="lancamento_despesa.html">Nova Receita</a></li>
+          <li class="breadcrumb-item active">Receita Parcelada</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- Fim Título da Pagina -->
+
+    <section class="section" >
+        <div class="row justify-content-center">
+
+            <div class="col-lg-12">
+
+                <div class="card" style="min-height: 66vh;">
+                    <div class="card-body d-flex align-items-center">
+                      <div class="col-md-7">
+                        <form action="/lancamento/receita/parcelado" method="post" class="row g-4 pt-4 pb-4 d-flex justify-content-center">
+
+                            <div class="col-md-10">
+                              <label for="iduser" class="form-label visually-hidden">ID</label>
+                              <input type="text" class="form-control visually-hidden" id="iduser" name="id_usuario" value="{$usuario.id_usuario}">
+                            </div>
+
+                            <div class="col-md-10">
+                              <label for="receita" class="form-label visually-hidden">Tipo Receita</label>
+                              <input type="text" class="form-control visually-hidden" id="receita" name="tipo_receita" value="Receita Parcelada">
+                            </div>
+
+                            <div class="col-md-10">
+                                <label for="descricao_receita" class="form-label">Descrição</label>
+                                <input type="text" class="form-control" name="descricao" id="descricao_receita">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="valor_receita" class="form-label">Valor Total</label>
+                                <input type="number" placeholder="R$ 00,00" name="valor"  class="form-control" id="valor_receita">
+                            </div>
+
+                            <div class="col-md-5" style="margin-top: auto;">
+                                <label for="parcelas_receita" class="form-label">Parcelas</label>
+                                <input type="number" placeholder="Lançar com divisão em pelo menos 2x" class="form-control" name="parcela" id="parcelas_receita">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="data_despesa_receita" class="form-label">Data da Receita</label>
+                                <input type="date" class="form-control" name="data_receita" id="data_despesa_receita">
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="frequencia_receita" class="form-label">Frequência</label>
+                                <select class="form-select" name="frequencia" id="frequencia_receita" required>
+                                  {loop="$frequencia"}
+                                  <option>{$value.descricao}</option>
+                                  {/loop}
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-5">
+                                <label for="contacartao_receita" class="form-label">Conta</label>
+                                <select class="form-select" name="id_conta" id="contacartao_receita">
+                                  <option value="">Opção conta não utilizada</option>
+                                  {loop="$conta"}
+                                  <option>{$value.apelido}</option>
+                                  {/loop}
+                                </select>
+                            </div>
+
+                            <div class="col-md-5">
+                              <label for="contacartao_receita" class="form-label">Cartão</label>
+                              <select class="form-select" name="id_cartao" id="contacartao_receita">
+                                <option value="">Opção cartão não utilizada</option>
+                                {loop="$cartao"}
+                                <option>{$value.apelido}</option>
+                                {/loop}
+                              </select>
+                          </div>
+
+                            <div class="col-md-10 mb-3">
+                                <label for="categoria_despesa" class="form-label">Categoria</label>
+                                <select class="form-select" name="id_categoria" id="categoria_despesa" required>
+                                  {loop="$categoria"}
+                                  <option>{$value.descricao}</option>
+                                  {/loop}
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-9 d-flex justify-content-center">
+                              <button type="button" class="btn btn-secondary me-1">Cancelar</button>
+                              <button type="submit" class="btn btn-success" style="background-color: #26A234; border-color: #26A234;">Salvar Receita</button>
+                            </div>
+                        </form>
+                      </div>
+                        <div class="col-md-5">
+                          <img src="../../res/site/assets/img/img_receita_parcelada.png" alt="Receita Parcelada" style="max-height: 66vh;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  </main>

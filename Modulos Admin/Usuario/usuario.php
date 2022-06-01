@@ -1,100 +1,10 @@
 <?php
 
+// DEPENDÊNCIAS
 use \Countpay\PageAdmin;
 use \Countpay\DB\Sql;
 
-
-
-// ROTA DO INDEX PARA O ADMINISTRADOR
-$app->get('/admin', function() {
-
-    $sql = new Sql();
-    $page = new PageAdmin();
-  
-    // VERIFICA SE O LOGIN JÁ FOI EFETIVADO, CASO NÃO É REDIRECIONADO PARA LOGIN
-    if (!isset($_SESSION['admin']))
-    {
-        header('Location: /admin/login');
-        exit;
-    }
-
-    $usuarioDados = $sql->select("SELECT quantidade_usuario FROM usuario_dados"); 
-    $contaDados = $sql->select("SELECT quantidade_conta FROM conta_dados");
-    $cartaoDados = $sql->select("SELECT quantidade_cartao FROM cartao_dados");
-    $lancamentoDados = $sql->select("SELECT lancamento_total FROM lancamento_dados");
-
-    $page->setTpl("index", array(
-        "usuarioDados"=>$usuarioDados[0],
-        "contaDados"=>$contaDados[0],
-        "cartaoDados"=>$cartaoDados[0],
-        "lancamentoDados"=>$lancamentoDados[0]
-    )); 
-  
-});
-
-
-
-
-
-// ROTA DO LOGIN PARA O ADMINISTRADOR
-$app->get('/admin/login', function() {
-
-    $page = new PageAdmin([
-        "header"=>false,
-        "footer"=>false
-    ]);
-
-    $page->setTpl("login");
-
-});
-
-
-// POST DO LOGIN PARA O ADMINISTRADOR
-$app->post('/admin/login', function() {
-
-    $sql = new Sql();
-
-    $login = $_POST['login'];
-    $senha = $_POST['senha'];
-
-    $array_resultado = $sql->select("SELECT login, senha, id_tipo_usuario FROM usuario WHERE login = :LOGIN AND senha = :SENHA",
-    array(
-        ":LOGIN"=>$login,
-        ":SENHA"=>$senha
-    ));
-
-    // Se existe algo no array, atribua as variaveis com o resultado dos array na posição.
-    if (!empty($array_resultado)) {
-
-    $resultado_login = $array_resultado[0]['login'];
-    $resultado_senha = $array_resultado[0]['senha']; 
-    $resultado_tipo_usuario = $array_resultado[0]['id_tipo_usuario'];
-
-    } else {
-        echo "<script language='javascript' type='text/javascript'>
-        alert('Login ou Senha invalido!');window.location.href='/admin/login';</script>";
-    }
-
-    if ($resultado_login == $login && $resultado_senha == $senha && $resultado_tipo_usuario == 1) {
-    
-    // ARMAZENA A SESSÃO SE O LOGIN SER EFETIVADO
-    $_SESSION['admin'] = $resultado_login;
-    header("Location: /admin");
-    exit;
-
-    } else {
-    echo "<script language='javascript' type='text/javascript'>
-    alert('Usuário ou Senha incorreto!');window.location.href='/admin/login';</script>";
-    }
-    
-});
-
-
-
-
-
-
-// ROTA PARA LISTAR OS USUÁRIOS
+// GET - ROTA PARA LISTAR OS USUÁRIOS
 $app->get('/admin/usuario', function() {
 
     $page = new PageAdmin();
@@ -114,16 +24,12 @@ $app->get('/admin/usuario', function() {
 });
 
 
-
-
-
-// ROTA PARA CRIAR NOVOS USUÁRIOS
+// GET - ROTA PARA CRIAR NOVOS USUÁRIOS
 $app->get('/admin/usuario/criar', function() {
 
     $page = new PageAdmin();
     $sql = new Sql();
     
-
     // VERIFICA SE O LOGIN JÁ FOI EFETIVADO, CASO NÃO É REDIRECIONADO PARA LOGIN
     if (!isset($_SESSION['admin']))
     {
@@ -133,15 +39,10 @@ $app->get('/admin/usuario/criar', function() {
         
     $page->setTpl("criarusuario");
         
-    
 });
 
 
-
-
-
-
-// POST PARA CRIAR NOVOS USUÁRIOS
+// POST - ROTA PARA CRIAR NOVOS USUÁRIOS
 $app->post('/admin/usuario/criar', function() {
     
     $sql = new Sql();
@@ -154,7 +55,6 @@ $app->post('/admin/usuario/criar', function() {
         exit;
     }
 
-    // COLETANDO INFORMAÇÕES DO FORM NO FRONT-END NA PAGINA: admin/criarusuario.html
     $nome = $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
     $email = $_POST['email'];
@@ -208,11 +108,7 @@ $app->post('/admin/usuario/criar', function() {
 });
 
 
-
-
-
-
-// ROTA PARA ALTERAR O USUÁRIO JÁ CADASTRADO
+// GET - ROTA PARA ALTERAR O USUÁRIO JÁ CADASTRADO
 $app->get('/admin/usuario/:id_usuario', function($id_usuario) {
 
     $page = new PageAdmin();
@@ -242,39 +138,7 @@ $app->get('/admin/usuario/:id_usuario', function($id_usuario) {
 });
 
 
-
-
-
-/****************************************************************************************************************************************************/
-/****************************************************************************************************************************************************/
-// ROTA PARA EXCLUIR USUÁRIO JÁ CADASTRADO
-$app->get('/admin/usuario/:id_usuario/delete', function($id_usuario) {
-
-    $sql = new Sql();
-    
-    // COLETA O ID DO USUÁRIO QUE FOI SELECIONADO VIA BROWSER NO BOTÃO DE EXCLUIR
-    $idColetado = $id_usuario;
-
-    // EXECUTA A EXCLUSÃO DA LINHA DE ACORDO COM O ID DO USUÁRIO COLETADO
-    $sql->execQuery("DELETE FROM usuario WHERE id_usuario = :ID_USUARIO", array(
-
-        ':ID_USUARIO'=>$idColetado
-
-    ));
-
-    // RETORNO QUE O USUÁRIO FOI EXCLUIDO COM SUCESSO
-    echo "<script language='javascript' type='text/javascript'>
-    alert('Usuário excluído com sucesso!');window.location.href='/admin/usuario';</script>";
-
-});
-
-
-
-
-
-/****************************************************************************************************************************************************/
-/****************************************************************************************************************************************************/
-// POST PARA ALTERAR USUÁRIO JÁ CADASTRADO
+// POST - ROTA PARA ALTERAR USUÁRIO JÁ CADASTRADO
 $app->post('/admin/usuario/alterar', function() {
     $sql = new Sql();
 
@@ -304,5 +168,28 @@ $app->post('/admin/usuario/alterar', function() {
     alert('Usuário alterado com sucesso!');window.location.href='/admin/usuario';</script>";
 
 });
+
+
+// GET - ROTA PARA EXCLUIR USUÁRIO JÁ CADASTRADO
+$app->get('/admin/usuario/:id_usuario/delete', function($id_usuario) {
+
+    $sql = new Sql();
+    
+    // COLETA O ID DO USUÁRIO QUE FOI SELECIONADO VIA BROWSER NO BOTÃO DE EXCLUIR
+    $idColetado = $id_usuario;
+
+    // EXECUTA A EXCLUSÃO DA LINHA DE ACORDO COM O ID DO USUÁRIO COLETADO
+    $sql->execQuery("DELETE FROM usuario WHERE id_usuario = :ID_USUARIO", array(
+
+        ':ID_USUARIO'=>$idColetado
+
+    ));
+
+    // RETORNO QUE O USUÁRIO FOI EXCLUIDO COM SUCESSO
+    echo "<script language='javascript' type='text/javascript'>
+    alert('Usuário excluído com sucesso!');window.location.href='/admin/usuario';</script>";
+
+});
+
 
 ?>

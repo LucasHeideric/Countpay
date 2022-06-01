@@ -85,6 +85,7 @@
                               </thead>
                               <tbody>
                                 <?php $counter1=-1;  if( isset($resultado) && ( is_array($resultado) || $resultado instanceof Traversable ) && sizeof($resultado) ) foreach( $resultado as $key1 => $value1 ){ $counter1++; ?>
+
                                 <tr>
                                   <td><?php echo htmlspecialchars( $value1["descricao_lancamento"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                   <td><span class="badge bg-secondary" style="font-size: small;"><?php echo htmlspecialchars( $value1["tipo_lancamento"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
@@ -97,6 +98,7 @@
                                   <td><?php echo htmlspecialchars( $value1["frequencia"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                 </tr>
                                 <?php } ?>
+
                               </tbody>
                             </table>
           

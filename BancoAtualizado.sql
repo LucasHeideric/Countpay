@@ -35,7 +35,7 @@ CREATE TABLE `cartao` (
   KEY `cartao_ibfk_2` (`id_instituicao`),
   CONSTRAINT `cartao_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`ID_USUARIO`),
   CONSTRAINT `cartao_ibfk_2` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`ID_INSTITUICAO`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (1,'Salário'),(2,'Emprestimo'),(3,'Shopping'),(4,'Alimentação'),(5,'Energia'),(6,'Lazer'),(7,'Horas Extra'),(8,'Internet'),(9,'Outros');
+INSERT INTO `categoria` VALUES (1,'Salário'),(2,'Empréstimos'),(3,'Investimentos'),(4,'Outras Receitas'),(5,'Alimentação'),(6,'Assinatura e Serviços'),(7,'Bares'),(8,'Restaurantes'),(9,'Casa'),(10,'Compras'),(11,'Cuidados Pessoais'),(12,'Dívidas'),(13,'Empréstimos'),(14,'Educação'),(15,'Familía'),(16,'Impostos'),(17,'Taxas'),(18,'Investimentos'),(19,'Lazer e Hobbies'),(20,'Mercado'),(21,'Pets'),(22,'Presentes'),(23,'Doações'),(24,'Roupas'),(25,'Saúde'),(26,'Trabalho'),(27,'Transporte'),(28,'Viagem'),(29,'Outras Despesas');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,7 +163,7 @@ CREATE TABLE `conta` (
   KEY `conta_ibfk_2` (`id_instituicao`),
   CONSTRAINT `conta_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`ID_USUARIO`),
   CONSTRAINT `conta_ibfk_2` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`ID_INSTITUICAO`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,'Conta Nubank','Conta Digital',0.00,100,260),(2,'Conta Inter','Conta Corrente',0.00,100,77),(3,'Conta Santander','Conta Corrente',0.00,100,33),(4,'Conta Itaú','Conta Itaú',0.00,100,341),(5,'Carteira','Carteira Física',0.00,100,1000),(6,'Carteira','Selecione',50.00,100,NULL),(7,'Carteira','Selecione',50.00,100,NULL);
+INSERT INTO `conta` VALUES (1,'Conta Nubank','Conta Digital',0.00,100,260),(2,'Conta Inter','Conta Corrente',0.00,100,77),(3,'Conta Santander','Conta Corrente',0.00,100,33),(4,'Conta Itaú','Conta Itaú',0.00,100,341),(5,'Carteira','Carteira Física',0.00,100,1000);
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -243,7 +243,7 @@ CREATE TABLE `conta_dados` (
 
 LOCK TABLES `conta_dados` WRITE;
 /*!40000 ALTER TABLE `conta_dados` DISABLE KEYS */;
-INSERT INTO `conta_dados` VALUES (1,'7');
+INSERT INTO `conta_dados` VALUES (1,'5');
 /*!40000 ALTER TABLE `conta_dados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +325,7 @@ CREATE TABLE `lancamento` (
   CONSTRAINT `categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`),
   CONSTRAINT `conta` FOREIGN KEY (`id_conta`) REFERENCES `conta` (`id_conta`),
   CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=16013 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16033 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,7 +334,7 @@ CREATE TABLE `lancamento` (
 
 LOCK TABLES `lancamento` WRITE;
 /*!40000 ALTER TABLE `lancamento` DISABLE KEYS */;
-INSERT INTO `lancamento` VALUES (16004,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-06-22',100,5,NULL,2,'1 / 4','Mensalmente'),(16005,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-07-22',100,5,NULL,2,'2 / 4','Mensalmente'),(16006,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-08-22',100,5,NULL,2,'3 / 4','Mensalmente'),(16007,'Empréstimo Tia Leonora','Receita Parcelada',250.00,'2022-09-22',100,5,NULL,2,'4 / 4','Mensalmente'),(16008,'A4S1A5S','Receita Parcelada',25.00,'2022-05-30',100,2,NULL,4,'1 / 2','Semanalmente'),(16009,'A4S1A5S','Receita Parcelada',25.00,'2022-06-06',100,2,NULL,4,'2 / 2','Semanalmente'),(16010,'Teste Unica','Receita',50.00,'2022-05-30',100,2,NULL,2,NULL,NULL),(16011,'Teste Parcelado','Receita Parcelada',60.00,'2022-05-30',100,1,NULL,5,'1 / 2','Bimestral'),(16012,'Teste Parcelado','Receita Parcelada',60.00,'2022-07-30',100,1,NULL,5,'2 / 2','Bimestral');
+INSERT INTO `lancamento` VALUES (16024,'Despesa Parcelada','Despesa Parcelada',16.67,'2022-05-31',100,1,NULL,5,'1 / 3','Semanalmente'),(16025,'Despesa Parcelada','Despesa Parcelada',16.67,'2022-06-07',100,1,NULL,5,'2 / 3','Semanalmente'),(16026,'Despesa Parcelada','Despesa Parcelada',16.67,'2022-06-14',100,1,NULL,5,'3 / 3','Semanalmente'),(16027,'Receita Unica','Receita',50.00,'2022-05-31',100,2,NULL,1,NULL,NULL),(16028,'Parcelada','Receita Parcelada',10.00,'2022-05-31',100,2,NULL,1,'1 / 2','Semanalmente'),(16029,'Parcelada','Receita Parcelada',10.00,'2022-06-07',100,2,NULL,1,'2 / 2','Semanalmente'),(16030,'Teste','Despesa',50.00,'2022-05-31',100,2,NULL,5,NULL,NULL),(16031,'Teste Agora','Despesa Parcelada',25.00,'2022-05-31',100,2,NULL,5,'1 / 2','Semanalmente'),(16032,'Teste Agora','Despesa Parcelada',25.00,'2022-06-07',100,2,NULL,5,'2 / 2','Semanalmente');
 /*!40000 ALTER TABLE `lancamento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -429,7 +429,7 @@ CREATE TABLE `lancamento_dados` (
 
 LOCK TABLES `lancamento_dados` WRITE;
 /*!40000 ALTER TABLE `lancamento_dados` DISABLE KEYS */;
-INSERT INTO `lancamento_dados` VALUES (1,1220.00);
+INSERT INTO `lancamento_dados` VALUES (1,220.00);
 /*!40000 ALTER TABLE `lancamento_dados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -592,6 +592,10 @@ LOCK TABLES `usuario_dados` WRITE;
 INSERT INTO `usuario_dados` VALUES (1,6);
 /*!40000 ALTER TABLE `usuario_dados` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'countpay'
+--
 
 --
 -- Dumping routines for database 'countpay'
@@ -777,4 +781,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-30 21:42:53
+-- Dump completed on 2022-05-31 22:04:52

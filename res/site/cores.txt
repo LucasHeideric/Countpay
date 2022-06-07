@@ -1,6 +1,0 @@
-
-	Verde: #26A234
-		
-	Vermelho: #E54640
-
-	Azul: #0AA8D0

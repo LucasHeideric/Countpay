@@ -41,6 +41,14 @@ $app->get('/cartao', function() {
 
 });
 
+$app->get('/alexandre', function(){
+
+    $page = new Page(["header"=>false,
+                      "footer"=>false]);
+
+    $page->setTpl("login");
+});
+
 /////////////////////////////////////////////////////////////
 /* ************* GET - ROTA PARA CRIAR CARTAO ************ */
 /////////////////////////////////////////////////////////////
@@ -438,4 +446,125 @@ $app->get('/conta/:id_conta/delete', function($id_conta) {
 
 });
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////
+/* ********************** GET - COPIA ******************** */
+/////////////////////////////////////////////////////////////
+$app->get('/lancamento/transferencia', function() {
+
+    // Dependências
+    $page = new Page();
+    $sql = new Sql();
+
+    // Verificar login, caso não foi efetuado é redirecionado para login
+    if (!isset($_SESSION['usuario']))
+    {
+        header('Location: /login');
+        exit;
+    }
+
+    // Armazena o ID do usuário de acordo com o login e guarda na variável (resultado_id)
+    $resultado_id = $_SESSION['usuario'];
+
+    // Select das instituição para o usuário analisar a sua
+    $conta = $sql->select("SELECT apelido FROM conta WHERE id_usuario = :ID_USUARIO", array(
+        ":ID_USUARIO"=>$resultado_id
+    ));
+
+    // Select das instituição para o usuário analisar a sua
+    $cartao = $sql->select("SELECT apelido FROM cartao WHERE id_usuario = :ID_USUARIO", array(
+        ":ID_USUARIO"=>$resultado_id
+    ));
+    
+    $usuario = $sql->select("SELECT id_usuario FROM usuario WHERE id_usuario = :ID_USUARIO", array(
+        ":ID_USUARIO"=>$resultado_id
+    ));
+
+    $page->setTpl("lancamento_transferencia",
+    array(
+        "conta"=>$conta,
+        "cartao"=>$cartao,
+        "usuario"=>$usuario[0]
+    ));
+
+});
+
+/////////////////////////////////////////////////////////////
+/* ******************** POST - COPIA ********************* */
+/////////////////////////////////////////////////////////////
+$app->post('/lancamento/transferencia', function() {
+
+    // Dependências
+    $page = new Page();
+    $sql = new Sql();
+
+    // Armazena o ID do usuário de acordo com o login e guarda na variável (resultado_id)
+    $id_usuario = $_SESSION['usuario'];
+
+    // Coletando dados do front-end que está dentro do diretório [views][arquivo][criar_cartao.html]
+    $conta_despesa_string = $_POST['id_conta_despesa'];
+    $conta_receita_string = $_POST['id_conta_receita'];
+    $valor = $_POST['valor'];
+    $data_lancamento = $_POST['data_lancamento'];
+    $tipo_lancamento_receita = 'Transferência Receita';
+    $tipo_lancamento_despesa = 'Transferência Despesa';
+    $categoria = 29;
+    $apelido_receita = 'Transferência recebida de ' . $conta_despesa_string;
+    $apelido_despesa = 'Transferência para ' . $conta_receita_string;
+
+    // Select das instituição para o usuário analisar a sua
+    $conta_despesa = $sql->select("SELECT id_conta FROM conta WHERE apelido LIKE :CONTA", array(
+        ":CONTA"=>$conta_despesa_string
+    ));
+
+    // Select das instituição para o usuário analisar a sua
+    $conta_receita = $sql->select("SELECT id_conta FROM conta WHERE apelido LIKE :CONTA", array(
+        ":CONTA"=>$conta_receita_string
+    ));    
+
+    // Verificação se os dados foi recebido, se sim realizar o armazenamento do id selecionado pelo usuário, caso não foi selecionado o campo fica vazio
+    if (!empty($conta_despesa)){
+        $conta_despesa = $conta_despesa[0]['id_conta'];
+        } else {
+            $conta_despesa = NULL;
+        }
+
+    // Verificação se os dados foi recebido, se sim realizar o armazenamento do id selecionado pelo usuário, caso não foi selecionado o campo fica vazio
+    if (!empty($conta_receita)){
+        $conta_receita = $conta_receita[0]['id_conta'];
+        } else {
+            $conta_receita = NULL;
+        }           
+    
+    $resultado1 = $sql->select("CALL sp_lancamento_transferencia(:DESCRICAO_DESPESA, :TIPO_LANCAMENTO, :VALOR, :DATA_LANCAMENTO, :USUARIO, :CONTA, :CATEGORIA )", array(
+        ':DESCRICAO_DESPESA'=>$apelido_despesa,
+        ':TIPO_LANCAMENTO'=>$tipo_lancamento_despesa,
+        ':VALOR'=>$valor,
+        ':DATA_LANCAMENTO'=>$data_lancamento,
+        ':USUARIO'=>$id_usuario,
+        ':CONTA'=>$conta_despesa,
+        ':CATEGORIA'=>$categoria, 
+    ));
+
+    $resultado2 = $sql->select("CALL sp_lancamento_transferencia(:DESCRICAO_RECEITA, :TIPO_LANCAMENTO, :VALOR, :DATA_LANCAMENTO, :USUARIO, :CONTA, :CATEGORIA )", array(
+        ':DESCRICAO_RECEITA'=>$apelido_receita,
+        ':TIPO_LANCAMENTO'=>$tipo_lancamento_receita,
+        ':VALOR'=>$valor,
+        ':DATA_LANCAMENTO'=>$data_lancamento,
+        ':USUARIO'=>$id_usuario,
+        ':CONTA'=>$conta_receita,
+        ':CATEGORIA'=>$categoria, 
+    ));
+
+
+    header('Location: /lancamento/historico');
+    exit;
+
+
+});
 ?>

@@ -736,7 +736,7 @@ $app->get('/lancamento/historico', function() {
     $resultado_id = $_SESSION['usuario'];
 
     // Select dos dados usado para gerar o histórico de lançamento
-    $resultado = $sql->select("SELECT lancamento.descricao_lancamento, lancamento.tipo_lancamento, lancamento.valor, categoria.descricao, lancamento.data_lancamento, IF(conta.apelido <> NULL, NULL, conta.apelido) 'conta', cartao.apelido 'cartao', lancamento.quantidade_parcelas, lancamento.frequencia
+    $resultado = $sql->select("SELECT lancamento.id_lancamento, lancamento.descricao_lancamento, lancamento.tipo_lancamento, lancamento.valor, categoria.descricao, lancamento.data_lancamento, IF(conta.apelido <> NULL, NULL, conta.apelido) 'conta', cartao.apelido 'cartao', lancamento.quantidade_parcelas, lancamento.frequencia
     FROM lancamento															
     INNER JOIN categoria ON lancamento.id_categoria = categoria.id_categoria AND lancamento.id_usuario = :ID_USUARIO
     LEFT OUTER JOIN cartao ON lancamento.id_cartao = cartao.id_cartao
@@ -751,6 +751,37 @@ $app->get('/lancamento/historico', function() {
     array(
         "resultado"=>$resultado
     ));
+});
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////
+/* ************ GET - ROTA DE EXCLUIR CARTÃO ************* */
+/////////////////////////////////////////////////////////////
+$app->get('/lancamento/:id_lancamento/delete', function($id_lancamento) {
+
+    $sql = new Sql();
+    
+    // Armazena o ID da conta dentro da variável (idColetado)
+    $idColetado = $id_lancamento;
+
+    var_dump($idColetado);
+
+     // Executa e exclusão da linha de acordo com o ID da conta coletado
+    $sql->execQuery("DELETE FROM lancamento WHERE id_lancamento = :ID_LANCAMENTO", array(
+
+        ':ID_LANCAMENTO'=>$idColetado
+
+    ));
+
+    // RETORNO QUE O USUÁRIO FOI EXCLUIDO COM SUCESSO
+    echo "<script language='javascript' type='text/javascript'>
+    alert('Lançamento excluído com sucesso!');window.location.href='/lancamento/historico';</script>";
+
 });
 
 ?>

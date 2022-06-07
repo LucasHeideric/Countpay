@@ -68,24 +68,27 @@
 
                         <!-- Table with hoverable rows -->
                         <div class="card-body pt-3">
-                            <table class="table table-hover datatable">
+                            <table class="table table-responsive table-hover datatable ">
                               <thead>
                                 <tr>
+                                  <th class="visually-hidden" scope="col">ID</th>
                                   <th scope="col">Descrição</th>
                                   <th scope="col">Tipo</th>
                                   <th scope="col">Valor</th>
                                   <th scope="col">Categoria</th>
-                                  <th scope="col">Data de Lançamento</th>
+                                  <th scope="col">Data</th>
                                   <th scope="col">Conta</th>
                                   <th scope="col">Cartão</th>
                                   <th scope="col">Parcelas</th>
                                   <th scope="col">Frequência</th>
+                                  <th scope="col">Ações</th>
 
                                 </tr>
                               </thead>
                               <tbody>
                                 {loop="$resultado"}
                                 <tr>
+                                  <td class="visually-hidden">{$value.id_lancamento}</td>
                                   <td>{$value.descricao_lancamento}</td>
                                   <td><span class="badge bg-secondary" style="font-size: small;">{$value.tipo_lancamento}</span></td>
                                   <td>{$value.valor}</td>
@@ -95,6 +98,8 @@
                                   <td>{$value.cartao}</td>
                                   <td>{$value.quantidade_parcelas}</td>
                                   <td>{$value.frequencia}</td>
+                                  <td><a href="/lancamento/{$value.id_lancamento}/delete" class="btn btn-danger btn-sm" style="line-height: 0.5;"><i class="bx bxs-trash"></i></a>
+                                  </td>
                                 </tr>
                                 {/loop}
                               </tbody>

@@ -14,7 +14,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../res/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +48,7 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
     <!-- Fim Logo -->
-    
+
     <!-- Inicio Busca -->
     <div class="search-bar">
       <form class="search-form d-flex align-items-center" method="POST" action="#">
@@ -68,6 +70,84 @@
         <!-- Fim Icone de Busca com tela reduzida -->
 
         <li class="nav-item dropdown">
+
+          <!-- Inicio Icone de Notificações -->
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a>
+          <!-- Fim Icone de Notificações -->
+
+          <!-- Inicio das Notificações com Dropdown -->
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              Você possui 4 novas notificações
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Ver todas</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Netflix</h4>
+                <p>Faltam 3 dias para a renovação da sua...</p>
+                <p>30 min. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Cuidado com os gastos</h4>
+                <p>Você está prestes a estourar sua meta...</p>
+                <p>1 hr. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Dia de pagamento!</h4>
+                <p>Confirme a entrada do seu salário no...</p>
+                <p>2 hrs. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Boas noticias</h4>
+                <p>Separamos uma série de investimentos que...</p>
+                <p>30 min. atrás</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Mostrar todas notificações</a>
+            </li>
+
+          </ul>
+          <!-- Fim das Notificações com Dropdown -->
+
+        </li>
+        <!-- Fim das Notificações -->
 
         <!-- Inicio Perfil -->
         <li class="nav-item dropdown pe-3">
@@ -130,7 +210,7 @@
 
   </header>
   <!-- Fim do Cabeçalho -->
-  
+
   <!-- ======= Inicio do Menu Lateral ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -207,7 +287,7 @@
           </li>
 
           <li>
-            <a href="lancamento_transferencia.html">
+            <a href="/lancamento/transferencia">
               <i class="bx bxs-chevron-right"></i><span>Transferência</span>
             </a>
           </li>
@@ -228,7 +308,7 @@
           <i class="bx bxs-bar-chart-square"></i><span>Metas</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          
+
           <li>
             <a href="nova_meta.html">
               <i class="bx bxs-chevron-right"></i><span>Criar Nova Meta</span>

@@ -68,18 +68,20 @@
 
                         <!-- Table with hoverable rows -->
                         <div class="card-body pt-3">
-                            <table class="table table-hover datatable">
+                            <table class="table table-responsive table-hover datatable ">
                               <thead>
                                 <tr>
+                                  <th class="visually-hidden" scope="col">ID</th>
                                   <th scope="col">Descrição</th>
                                   <th scope="col">Tipo</th>
                                   <th scope="col">Valor</th>
                                   <th scope="col">Categoria</th>
-                                  <th scope="col">Data de Lançamento</th>
+                                  <th scope="col">Data</th>
                                   <th scope="col">Conta</th>
                                   <th scope="col">Cartão</th>
                                   <th scope="col">Parcelas</th>
                                   <th scope="col">Frequência</th>
+                                  <th scope="col">Ações</th>
 
                                 </tr>
                               </thead>
@@ -87,6 +89,7 @@
                                 <?php $counter1=-1;  if( isset($resultado) && ( is_array($resultado) || $resultado instanceof Traversable ) && sizeof($resultado) ) foreach( $resultado as $key1 => $value1 ){ $counter1++; ?>
 
                                 <tr>
+                                  <td class="visually-hidden"><?php echo htmlspecialchars( $value1["id_lancamento"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                   <td><?php echo htmlspecialchars( $value1["descricao_lancamento"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                   <td><span class="badge bg-secondary" style="font-size: small;"><?php echo htmlspecialchars( $value1["tipo_lancamento"], ENT_COMPAT, 'UTF-8', FALSE ); ?></span></td>
                                   <td><?php echo htmlspecialchars( $value1["valor"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
@@ -96,6 +99,8 @@
                                   <td><?php echo htmlspecialchars( $value1["cartao"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                   <td><?php echo htmlspecialchars( $value1["quantidade_parcelas"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                                   <td><?php echo htmlspecialchars( $value1["frequencia"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                                  <td><a href="/lancamento/<?php echo htmlspecialchars( $value1["id_lancamento"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" class="btn btn-danger btn-sm" style="line-height: 0.5;"><i class="bx bxs-trash"></i></a>
+                                  </td>
                                 </tr>
                                 <?php } ?>
 

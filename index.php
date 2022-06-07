@@ -19,6 +19,7 @@ require_once("Modulos Site\Login\login.php");
 require_once("Modulos Site\Dashboard\dashboard.php");
 require_once("Modulos Site\Carteira\carteira.php");
 require_once("Modulos Site\Lancamentos\lancamentos.php");
+require_once("Modulos Site\Metas\metas.php");
 
 
 $app->run();
